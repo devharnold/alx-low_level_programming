@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * rec_search - Binary search algorithm
+ * binary_search - Binary search algorithm
  *
  *
  * @array: input array
@@ -30,15 +30,15 @@ int binary_search(int *array, size_t size, int value)
 	if (value == array[half])
 	{
 		if (half > 0)
-			return (rec_search(array, half + 1, value));
+			return (binary_search(array, half + 1, value));
 		return ((int)half);
 	}
 
 	if (value < array[half])
-		return (rec_search(array, half + 1, value));
+		return (binary_search(array, half + 1, value));
 
 	half++;
-	return (rec_search(array + half, size - half, value) + half);
+	return (binary_search(array + half, size - half, value) + half);
 }
 
 /**
@@ -53,7 +53,7 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int index;
 
-	index = rec_search(array, size, value);
+	index = binary_search(array, size, value);
 
 	if (index >= 0 && array[index] != value)
 		return (-1);
